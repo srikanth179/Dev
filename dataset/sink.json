@@ -18,14 +18,15 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": {
+				"fileName": {
 					"value": "@dataset().table_name",
 					"type": "Expression"
 				},
-				"container": {
+				"folderPath": {
 					"value": "@dataset().schema_name",
 					"type": "Expression"
-				}
+				},
+				"container": "landingpage"
 			}
 		}
 	},
