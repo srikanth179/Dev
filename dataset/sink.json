@@ -21,6 +21,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(dataset().schema_name,'/',dataset().schema_name,'/',dataset().table_name)",
+					"type": "Expression"
+				},
 				"fileSystem": "loadingfiles"
 			},
 			"columnDelimiter": ",",
