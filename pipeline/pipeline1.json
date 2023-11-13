@@ -61,10 +61,7 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": {
-										"value": "select * from metadata.sourcetable",
-										"type": "Expression"
-									},
+									"sqlReaderQuery": "select schema_name,entity_name,table_name from metadata.sourcetable",
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -97,18 +94,6 @@
 										"schema_name": {
 											"value": "@item().schema_name",
 											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "sink",
-									"type": "DatasetReference",
-									"parameters": {
-										"schema_name": {
-											"value": "@item().schema_name",
-											"type": "Expression"
 										},
 										"entity_name": {
 											"value": "@item().entity_name",
@@ -118,6 +103,17 @@
 											"value": "@item().table_name",
 											"type": "Expression"
 										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "sink",
+									"type": "DatasetReference",
+									"parameters": {
+										"schema_name": "\"\"",
+										"entity_name": "\"\"",
+										"table_name": "\"\""
 									}
 								}
 							]
