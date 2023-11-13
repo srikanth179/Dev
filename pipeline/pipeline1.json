@@ -111,9 +111,18 @@
 									"referenceName": "sink",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema_name": "\"\"",
-										"entity_name": "\"\"",
-										"table_name": "\"\""
+										"schema_name": {
+											"value": "@item().schema_name",
+											"type": "Expression"
+										},
+										"entity_name": {
+											"value": "@item().entity_name",
+											"type": "Expression"
+										},
+										"table_name": {
+											"value": "@item().table_name",
+											"type": "Expression"
+										}
 									}
 								}
 							]
