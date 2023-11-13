@@ -11,6 +11,9 @@
 			},
 			"entity_name": {
 				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
