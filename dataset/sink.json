@@ -20,7 +20,12 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(dataset().schema_name,'/',dataset().entity_name,'/',dataset().table_name)",
+					"type": "Expression"
+				},
+				"fileSystem": "dev"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
