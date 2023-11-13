@@ -11,6 +11,9 @@
 			},
 			"entity_name": {
 				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -22,7 +25,7 @@
 				"type": "Expression"
 			},
 			"table": {
-				"value": "@dataset().entity_name",
+				"value": "@dataset().table_name",
 				"type": "Expression"
 			}
 		}
