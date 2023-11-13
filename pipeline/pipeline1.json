@@ -61,10 +61,6 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": {
-										"value": "@{concat('select * from',item().schema_name,'.',item().entity_name,'.',item().table_name)}",
-										"type": "Expression"
-									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -92,7 +88,13 @@
 							"inputs": [
 								{
 									"referenceName": "source",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"schema_name": {
+											"value": "@item().schema_name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
@@ -101,17 +103,14 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"schema_name": {
-											"value": "@item().schema_name",
+											"value": "item().schema_name",
 											"type": "Expression"
 										},
 										"entity_name": {
-											"value": "@item().entity_name",
+											"value": "item().entity_name",
 											"type": "Expression"
 										},
-										"table_name": {
-											"value": "@item().table_name",
-											"type": "Expression"
-										}
+										"table_name": "item().table_name"
 									}
 								}
 							]
