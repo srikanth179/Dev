@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://gen2accessaccount.dfs.core.windows.net/",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwNmU5NTIyZS1iYWI2LTQyOGEtODc3Yi04NDc4MGE3NDlhZjAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"url": "https://datagen2storageaccount.dfs.core.windows.net/",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxODFhOWM2Yi00MjFlLTRhZTgtODgzYy1kYmEwYjczODAxYTYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
