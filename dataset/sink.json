@@ -25,7 +25,7 @@
 					"value": "@concat(dataset().schema_name,'/',dataset().entity_name,'/',dataset().table_name)",
 					"type": "Expression"
 				},
-				"fileSystem": "container"
+				"fileSystem": "loggingfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
