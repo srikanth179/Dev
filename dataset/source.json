@@ -5,17 +5,6 @@
 			"referenceName": "SqlServer1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"schema_name": {
-				"type": "string"
-			},
-			"entity_name": {
-				"type": "string"
-			},
-			"table_name": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "SqlServerTable",
 		"schema": []
