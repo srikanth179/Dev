@@ -9,9 +9,6 @@
 			"schema_name": {
 				"type": "string"
 			},
-			"entity_name": {
-				"type": "string"
-			},
 			"table_name": {
 				"type": "string"
 			}
@@ -22,10 +19,10 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(dataset().schema_name,'/',dataset().entity_name,'/',dataset().table_name)",
+					"value": "@concat(dataset().schema_name,'/',dataset().table_name)",
 					"type": "Expression"
 				},
-				"fileSystem": "loggingfiles"
+				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
