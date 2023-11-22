@@ -6,8 +6,8 @@
 		"type": "AzureDatabricks",
 		"typeProperties": {
 			"domain": "https://adb-4563587347391816.16.azuredatabricks.net",
-			"existingClusterId": "1122-050200-937bcuim",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyYWQ1YTc0Yi04NGI3LTRjZjMtODY3MC05MDYwODA3MTM5ZTkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"existingClusterId": "1122-074556-9u0z96rd",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjMTAwODliYS0xY2FiLTQwNDUtODMxNC02MDQ3ODc1ZDcwZDEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
