@@ -1,0 +1,9 @@
+{
+	"name": "sapdatafactorysfdc",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b301b187-a7d7-42d2-9e4c-843479c924b7",
+		"tenantId": "6736772c-4750-47ec-90d6-acb94cb2a737"
+	}
+}
