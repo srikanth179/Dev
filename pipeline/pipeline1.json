@@ -143,14 +143,6 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": {
-											"value": "@item().schema_name",
-											"type": "Expression"
-										},
-										"wildcardFileName": {
-											"value": "@item().table_name",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -183,10 +175,6 @@
 									"referenceName": "archivesource",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema_name": {
-											"value": "@item().schema_name",
-											"type": "Expression"
-										},
 										"table_name": {
 											"value": "@item().table_name",
 											"type": "Expression"
@@ -204,7 +192,7 @@
 											"type": "Expression"
 										},
 										"current_date": {
-											"value": "@pipeline().TriggerTime",
+											"value": "@utcnow('yyyy-MM-dd')",
 											"type": "Expression"
 										},
 										"archive_folder": "archive_folder"

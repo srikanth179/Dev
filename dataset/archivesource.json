@@ -5,23 +5,13 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"schema_name": {
-				"type": "string"
-			},
-			"table_name": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@dataset().schema_name",
-					"type": "Expression"
-				},
+				"fileName": "SAP.EMP.txt",
+				"folderPath": "SAP/EMP",
 				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",
