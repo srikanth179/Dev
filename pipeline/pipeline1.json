@@ -47,7 +47,7 @@
 					},
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "RAWZONE TO CURATORZONE",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -119,11 +119,11 @@
 							]
 						},
 						{
-							"name": "Copy data2",
+							"name": "archive_pipeline",
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Copy data1",
+									"activity": "RAWZONE TO CURATORZONE",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -142,15 +142,7 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"wildcardFolderPath": {
-											"value": "@item().schema_name",
-											"type": "Expression"
-										},
-										"wildcardFileName": {
-											"value": "@item().table_name",
-											"type": "Expression"
-										},
+										"fileListPath": "rawzone/SAP",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -196,7 +188,8 @@
 										"current_date": {
 											"value": "@pipeline().TriggerTime",
 											"type": "Expression"
-										}
+										},
+										"archive_folder": "archive_folder"
 									}
 								}
 							]

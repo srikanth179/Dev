@@ -11,6 +11,9 @@
 			},
 			"current_date": {
 				"type": "string"
+			},
+			"archive_folder": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -19,7 +22,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(dataset().schema_name,'/',dataset().current_date)",
+					"value": "@concat(dataset().schema_name,'/',dataset().archive_folder,'/',dataset().current_date)",
 					"type": "Expression"
 				},
 				"fileSystem": "rawzone"

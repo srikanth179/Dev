@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "SAP",
+				"folderPath": "SAP/SFDC",
 				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",
