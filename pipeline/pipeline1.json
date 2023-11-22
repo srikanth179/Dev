@@ -175,8 +175,8 @@
 									"referenceName": "archivesource",
 									"type": "DatasetReference",
 									"parameters": {
-										"table_name": {
-											"value": "@item().table_name",
+										"schema_name": {
+											"value": "@item().schema_name",
 											"type": "Expression"
 										}
 									}
