@@ -202,14 +202,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"sourcepath": {
-				"type": "string"
-			},
-			"sourcefile": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"lastPublishTime": "2023-11-23T13:29:11Z"
 	},
