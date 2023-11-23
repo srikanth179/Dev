@@ -52,8 +52,8 @@
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": {
-								"value": "@pipeline().parameters.filename",
+							"folderpath": {
+								"value": "@pipeline().parameters.folderpath",
 								"type": "Expression"
 							}
 						}
@@ -68,7 +68,7 @@
 			}
 		],
 		"parameters": {
-			"filename": {
+			"folderpath": {
 				"type": "string"
 			}
 		},
