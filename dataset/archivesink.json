@@ -1,5 +1,5 @@
 {
-	"name": "sink",
+	"name": "archivesink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -9,7 +9,10 @@
 			"schema_name": {
 				"type": "string"
 			},
-			"table_name": {
+			"current_date": {
+				"type": "string"
+			},
+			"Archive_folder": {
 				"type": "string"
 			}
 		},
@@ -19,7 +22,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(dataset().schema_name,'/',dataset().table_name)",
+					"value": "@concat(dataset().schema_name,'/',dataset().Archive_folder,'/',dataset().current_date)",
 					"type": "Expression"
 				},
 				"fileSystem": "rawzone"
