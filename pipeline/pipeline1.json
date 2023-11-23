@@ -190,7 +190,7 @@
 											"type": "Expression"
 										},
 										"current_date": {
-											"value": "@formatDateTime(utcnow())",
+											"value": "@formatDateTime(utcnow('yyyy-MM-dd'))",
 											"type": "Expression"
 										},
 										"Archive_folder": "Archive_folder"
