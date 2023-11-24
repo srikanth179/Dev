@@ -52,7 +52,7 @@
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference",
 						"parameters": {
-							"folderpath": {
+							"folder_path": {
 								"value": "@pipeline().parameters.folderpath",
 								"type": "Expression"
 							}
@@ -61,14 +61,23 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText2ourput",
-						"type": "DatasetReference"
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_path": {
+								"value": "@pipeline().parameters.filepath",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
 		"parameters": {
 			"folderpath": {
+				"type": "string"
+			},
+			"filepath": {
 				"type": "string"
 			}
 		},
