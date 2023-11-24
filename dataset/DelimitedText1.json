@@ -19,7 +19,7 @@
 					"value": "@dataset().folderpath",
 					"type": "Expression"
 				},
-				"folderPath": "eventbased/HR",
+				"folderPath": "event",
 				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",

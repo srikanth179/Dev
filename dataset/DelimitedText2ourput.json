@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "eventbased/SAP",
+				"folderPath": "event",
 				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",
