@@ -50,17 +50,45 @@
 				"inputs": [
 					{
 						"referenceName": "trigger_source",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folderpath": {
+								"value": "@pipeline().parameters.folderpath",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.filename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "trigger_sink",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folderpath": {
+								"value": "@pipeline().parameters.folderpath",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@pipeline().parameters.filename",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"filename": {
+				"type": "string"
+			},
+			"folderpath": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
