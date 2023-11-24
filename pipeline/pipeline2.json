@@ -20,14 +20,6 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@pipeline().parameters.folderpath",
-								"type": "Expression"
-							},
-							"wildcardFileName": {
-								"value": "@pipeline().parameters.filepath",
-								"type": "Expression"
-							},
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -58,7 +50,13 @@
 				"inputs": [
 					{
 						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folder_name": {
+								"value": "@pipeline().parameters.folderpath",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
