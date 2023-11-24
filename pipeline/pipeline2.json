@@ -36,13 +36,29 @@
 				"inputs": [
 					{
 						"referenceName": "Binary1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@pipeline().parameters.Filename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Binary2",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@pipeline().parameters.Filename",
+								"type": "Expression"
+							},
+							"foldername": {
+								"value": "@pipeline().parameters.Foldername",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
