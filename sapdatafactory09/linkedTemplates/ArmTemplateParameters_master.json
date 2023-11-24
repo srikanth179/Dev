@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sapdatafactory09"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sapsfdcstorageaccount.dfs.core.windows.net/"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccountsfdc"
+		},
+		"triggerevent_properties_typeProperties_scope": {
+			"value": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccountsfdc"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
