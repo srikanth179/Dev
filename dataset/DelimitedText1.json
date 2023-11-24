@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"folder_path": {
+			"file_name": {
 				"type": "string"
 			}
 		},
@@ -16,10 +16,10 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().folder_path",
+					"value": "@dataset().file_name",
 					"type": "Expression"
 				},
-				"folderPath": "event",
+				"folderPath": "event/HR",
 				"fileSystem": "rawzone"
 			},
 			"columnDelimiter": ",",
