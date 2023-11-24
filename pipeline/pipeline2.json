@@ -20,6 +20,14 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "@pipeline().parameters.folderpath",
+								"type": "Expression"
+							},
+							"wildcardFileName": {
+								"value": "@pipeline().parameters.filepath",
+								"type": "Expression"
+							},
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -55,6 +63,10 @@
 							"folderpath": {
 								"value": "@pipeline().parameters.folderpath",
 								"type": "Expression"
+							},
+							"filepath": {
+								"value": "@pipeline().parameters.filepath",
+								"type": "Expression"
 							}
 						}
 					}
@@ -68,6 +80,9 @@
 			}
 		],
 		"parameters": {
+			"filepath": {
+				"type": "string"
+			},
 			"folderpath": {
 				"type": "string"
 			}
