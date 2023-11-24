@@ -19,13 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://sapsfdcstorageaccount.dfs.core.windows.net/"
 		},
+		"trigger1_properties_pipeline2_parameters_folderpath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccountsfdc"
-		},
-		"triggerevent_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccountsfdc"
+			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapsfdcstorageaccount"
 		}
 	},
 	"variables": {
@@ -308,7 +308,7 @@
 								"referenceName": "DelimitedText1",
 								"type": "DatasetReference",
 								"parameters": {
-									"folderpath": {
+									"folder_path": {
 										"value": "@pipeline().parameters.folderpath",
 										"type": "Expression"
 									}
@@ -317,9 +317,14 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DelimitedText2ourput",
+								"referenceName": "DelimitedText2",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"file_path": {
+										"value": "@pipeline().parameters.filepath",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
@@ -330,13 +335,16 @@
 				"parameters": {
 					"folderpath": {
 						"type": "string"
+					},
+					"filepath": {
+						"type": "string"
 					}
 				},
 				"annotations": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText2ourput')]"
+				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
 			]
 		},
 		{
@@ -349,7 +357,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"folderpath": {
+					"folder_path": {
 						"type": "string"
 					}
 				},
@@ -359,10 +367,10 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": {
-							"value": "@dataset().folderpath",
+							"value": "@dataset().folder_path",
 							"type": "Expression"
 						},
-						"folderPath": "eventbased/HR",
+						"folderPath": "event",
 						"fileSystem": "rawzone"
 					},
 					"columnDelimiter": ",",
@@ -377,7 +385,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText2ourput')]",
+			"name": "[concat(parameters('factoryName'), '/DelimitedText2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -385,12 +393,21 @@
 					"referenceName": "AzureDataLakeStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"file_path": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "eventbased/SAP",
+						"fileName": {
+							"value": "@dataset().file_path",
+							"type": "Expression"
+						},
+						"folderPath": "event/SAP",
 						"fileSystem": "rawzone"
 					},
 					"columnDelimiter": ",",
@@ -590,48 +607,19 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "pipeline1",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/rawzone/blobs/eventbased",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated",
-						"Microsoft.Storage.BlobDeleted"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/triggerevent')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
 							"referenceName": "pipeline2",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"folderpath": "[parameters('trigger1_properties_pipeline2_parameters_folderpath')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/rawzone/blobs/eventbased/",
+					"blobPathBeginsWith": "/rawzone/blobs/event/",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('triggerevent_properties_typeProperties_scope')]",
+					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated",
 						"Microsoft.Storage.BlobDeleted"
