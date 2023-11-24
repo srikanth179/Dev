@@ -41,6 +41,10 @@
 							"filename": {
 								"value": "@pipeline().parameters.Filename",
 								"type": "Expression"
+							},
+							"foldername": {
+								"value": "@pipeline().parameters.Foldername",
+								"type": "Expression"
 							}
 						}
 					}
