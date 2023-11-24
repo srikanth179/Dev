@@ -19,9 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://sapsfdcstorageaccount.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline2_parameters_folderpath": {
+		"trigger1_properties_pipeline2_parameters_Filename": {
 			"type": "string",
-			"defaultValue": "triggerPath().folderPath"
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"trigger1_properties_pipeline2_parameters_Foldername": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
 		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
@@ -82,6 +86,82 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Binary1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					},
+					"foldername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@concat('event','/',dataset().foldername)",
+							"type": "Expression"
+						},
+						"fileSystem": "rawzone"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Binary2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					},
+					"foldername": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().foldername",
+							"type": "Expression"
+						},
+						"fileSystem": "curatorzone"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		},
 		{
@@ -220,49 +300,6 @@
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/trigger_sink')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataLakeStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"folderpath": {
-						"type": "string"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@dataset().filename",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().folderpath",
-							"type": "Expression"
-						},
-						"fileSystem": "rawzone"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger_source')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -544,48 +581,34 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "DelimitedTextSource",
+								"type": "BinarySource",
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
+									"recursive": true
 								},
 								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
+									"type": "BinaryReadSettings"
 								}
 							},
 							"sink": {
-								"type": "DelimitedTextSink",
+								"type": "BinarySink",
 								"storeSettings": {
 									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
 								}
 							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
+							"enableStaging": false
 						},
 						"inputs": [
 							{
-								"referenceName": "trigger_source",
+								"referenceName": "Binary1",
 								"type": "DatasetReference",
 								"parameters": {
-									"folderpath": {
-										"value": "@pipeline().parameters.folderpath",
+									"filename": {
+										"value": "@pipeline().parameters.Filename",
 										"type": "Expression"
 									},
-									"filename": {
-										"value": "@pipeline().parameters.filename",
+									"foldername": {
+										"value": "@pipeline().parameters.Foldername",
 										"type": "Expression"
 									}
 								}
@@ -593,15 +616,15 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "trigger_sink",
+								"referenceName": "Binary2",
 								"type": "DatasetReference",
 								"parameters": {
-									"folderpath": {
-										"value": "@pipeline().parameters.folderpath",
+									"filename": {
+										"value": "@pipeline().parameters.Filename",
 										"type": "Expression"
 									},
-									"filename": {
-										"value": "@pipeline().parameters.filename",
+									"foldername": {
+										"value": "@pipeline().parameters.Foldername",
 										"type": "Expression"
 									}
 								}
@@ -613,18 +636,18 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"filename": {
+					"Filename": {
 						"type": "string"
 					},
-					"folderpath": {
+					"Foldername": {
 						"type": "string"
 					}
 				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/trigger_source')]",
-				"[concat(variables('factoryId'), '/datasets/trigger_sink')]"
+				"[concat(variables('factoryId'), '/datasets/Binary1')]",
+				"[concat(variables('factoryId'), '/datasets/Binary2')]"
 			]
 		},
 		{
@@ -641,7 +664,8 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"folderpath": "[parameters('trigger1_properties_pipeline2_parameters_folderpath')]"
+							"Filename": "[parameters('trigger1_properties_pipeline2_parameters_Filename')]",
+							"Foldername": "[parameters('trigger1_properties_pipeline2_parameters_Foldername')]"
 						}
 					}
 				],
