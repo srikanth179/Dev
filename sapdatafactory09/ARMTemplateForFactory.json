@@ -276,14 +276,6 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
-									"wildcardFolderPath": {
-										"value": "@pipeline().parameters.folderpath",
-										"type": "Expression"
-									},
-									"wildcardFileName": {
-										"value": "@pipeline().parameters.filepath",
-										"type": "Expression"
-									},
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -320,8 +312,8 @@
 										"value": "@pipeline().parameters.folderpath",
 										"type": "Expression"
 									},
-									"filepath": {
-										"value": "@pipeline().parameters.filepath",
+									"filename": {
+										"value": "@pipeline().parameters.filename",
 										"type": "Expression"
 									}
 								}
@@ -331,7 +323,16 @@
 							{
 								"referenceName": "trigger_sink",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"folderpath": {
+										"value": "@pipeline().parameters.folderpath",
+										"type": "Expression"
+									},
+									"filename": {
+										"value": "@pipeline().parameters.filename",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
@@ -340,7 +341,7 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"filepath": {
+					"filename": {
 						"type": "string"
 					},
 					"folderpath": {
@@ -497,12 +498,27 @@
 					"referenceName": "AzureDataLakeStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"folderpath": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "event/IT",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().folderpath",
+							"type": "Expression"
+						},
 						"fileSystem": "rawzone"
 					},
 					"columnDelimiter": ",",
@@ -529,7 +545,7 @@
 					"folderpath": {
 						"type": "string"
 					},
-					"filepath": {
+					"filename": {
 						"type": "string"
 					}
 				},
@@ -538,7 +554,14 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "event",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().folderpath",
+							"type": "Expression"
+						},
 						"fileSystem": "rawzone"
 					},
 					"columnDelimiter": ",",
