@@ -21,7 +21,7 @@
 		},
 		"trigger1_properties_pipeline2_parameters_folderpath": {
 			"type": "string",
-			"defaultValue": "@triggerBody().folderPath"
+			"defaultValue": "triggerPath().folderPath"
 		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
