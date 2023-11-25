@@ -11,9 +11,6 @@
 			},
 			"folderpath": {
 				"type": "string"
-			},
-			"FolderName": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
