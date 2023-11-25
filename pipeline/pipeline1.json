@@ -45,10 +45,6 @@
 							"folderpath": {
 								"value": "@pipeline().parameters.FolderPath",
 								"type": "Expression"
-							},
-							"foldername": {
-								"value": "@pipeline().parameters.FolderName",
-								"type": "Expression"
 							}
 						}
 					}
@@ -64,10 +60,6 @@
 							},
 							"FolderPath": {
 								"value": "@pipeline().parameters.FolderPath",
-								"type": "Expression"
-							},
-							"Foldername": {
-								"value": "@pipeline().parameters.FolderName",
 								"type": "Expression"
 							}
 						}
