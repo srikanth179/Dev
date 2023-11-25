@@ -21,8 +21,7 @@
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccount1",
 			"events": [
-				"Microsoft.Storage.BlobCreated",
-				"Microsoft.Storage.BlobDeleted"
+				"Microsoft.Storage.BlobCreated"
 			]
 		}
 	}
