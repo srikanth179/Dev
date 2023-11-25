@@ -18,11 +18,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@dataset().FolderPath",
+				"fileName": {
+					"value": "@dataset().Filename",
 					"type": "Expression"
 				},
-				"fileSystem": "curatorzone"
+				"fileSystem": {
+					"value": "@concat('curatorzone','/',dataset().FolderPath)",
+					"type": "Expression"
+				}
 			}
 		}
 	}
