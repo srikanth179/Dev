@@ -11,9 +11,6 @@
 			},
 			"FolderPath": {
 				"type": "string"
-			},
-			"FolderName": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -22,7 +19,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(dataset().FolderPath,'/',dataset().FolderName)",
+					"value": "@concat(dataset().FolderPath,'/','folder_name')",
 					"type": "Expression"
 				},
 				"fileSystem": "curatorzone"

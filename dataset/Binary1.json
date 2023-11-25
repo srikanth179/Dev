@@ -11,9 +11,6 @@
 			},
 			"folderpath": {
 				"type": "string"
-			},
-			"FolderName": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -22,7 +19,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat('event','/',dataset().FolderName)",
+					"value": "@concat(dataset().folderpath,'/','folder_name')",
 					"type": "Expression"
 				},
 				"fileSystem": "rawzone"
