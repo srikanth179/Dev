@@ -22,10 +22,11 @@
 					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
-				"fileSystem": {
-					"value": "@dataset().folderpath",
+				"folderPath": {
+					"value": "@concat('event','/',dataset().folderpath)",
 					"type": "Expression"
-				}
+				},
+				"fileSystem": "rawzone"
 			}
 		}
 	}
