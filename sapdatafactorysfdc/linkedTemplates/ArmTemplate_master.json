@@ -19,6 +19,18 @@
 			"type": "string",
 			"defaultValue": "https://sapstorageaccount1.dfs.core.windows.net/"
 		},
+		"trigger1_properties_pipeline1_parameters_Foldername": {
+			"type": "string",
+			"defaultValue": "@triggerBody().FolderName"
+		},
+		"trigger1_properties_pipeline1_parameters_FolderPath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().FolderPath"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccount1"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -54,6 +66,15 @@
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"trigger1_properties_pipeline1_parameters_Foldername": {
+						"value": "[parameters('trigger1_properties_pipeline1_parameters_Foldername')]"
+					},
+					"trigger1_properties_pipeline1_parameters_FolderPath": {
+						"value": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					}
 				}
 			},
