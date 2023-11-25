@@ -27,6 +27,10 @@
 			"type": "string",
 			"defaultValue": "@triggerBody().folderPath"
 		},
+		"trigger1_properties_pipeline1_parameters_FolderName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderName"
+		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccount1"
@@ -85,6 +89,10 @@
 									"folderpath": {
 										"value": "@pipeline().parameters.FolderPath",
 										"type": "Expression"
+									},
+									"FolderName": {
+										"value": "@pipeline().parameters.FolderName",
+										"type": "Expression"
 									}
 								}
 							}
@@ -101,6 +109,10 @@
 									"FolderPath": {
 										"value": "@pipeline().parameters.FolderPath",
 										"type": "Expression"
+									},
+									"FolderName": {
+										"value": "@pipeline().parameters.FolderName",
+										"type": "Expression"
 									}
 								}
 							}
@@ -115,6 +127,9 @@
 						"type": "string"
 					},
 					"FolderPath": {
+						"type": "string"
+					},
+					"FolderName": {
 						"type": "string"
 					}
 				},
@@ -140,6 +155,9 @@
 					},
 					"folderpath": {
 						"type": "string"
+					},
+					"FolderName": {
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -147,7 +165,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "event",
+						"folderPath": {
+							"value": "@concat('event','/',dataset().FolderName)",
+							"type": "Expression"
+						},
 						"fileSystem": "rawzone"
 					}
 				}
@@ -171,6 +192,9 @@
 					},
 					"FolderPath": {
 						"type": "string"
+					},
+					"FolderName": {
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -179,7 +203,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": {
-							"value": "@dataset().FolderPath",
+							"value": "@concat(dataset().FolderPath,'/',dataset().FolderName)",
 							"type": "Expression"
 						},
 						"fileSystem": "curatorzone"
@@ -257,7 +281,8 @@
 						},
 						"parameters": {
 							"FileName": "[parameters('trigger1_properties_pipeline1_parameters_FileName')]",
-							"FolderPath": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]"
+							"FolderPath": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]",
+							"FolderName": "[parameters('trigger1_properties_pipeline1_parameters_FolderName')]"
 						}
 					}
 				],
