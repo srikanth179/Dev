@@ -19,7 +19,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat(dataset().folderpath,'/','folder_name')",
+					"value": "@dataset().folderpath",
 					"type": "Expression"
 				},
 				"fileSystem": "rawzone"
