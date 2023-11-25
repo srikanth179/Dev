@@ -43,7 +43,7 @@
 								"type": "Expression"
 							},
 							"foldername": {
-								"value": "@pipeline().parameters.Foldername",
+								"value": "@pipeline().parameters.Folderpath",
 								"type": "Expression"
 							}
 						}
@@ -59,7 +59,7 @@
 								"type": "Expression"
 							},
 							"foldername": {
-								"value": "@pipeline().parameters.Foldername",
+								"value": "@pipeline().parameters.Folderpath",
 								"type": "Expression"
 							}
 						}
@@ -71,7 +71,7 @@
 			"Filename": {
 				"type": "string"
 			},
-			"Foldername": {
+			"Folderpath": {
 				"type": "string"
 			}
 		},

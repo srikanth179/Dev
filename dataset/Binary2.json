@@ -23,10 +23,10 @@
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@dataset().foldername",
+					"value": "@concat('event','/',dataset().foldername)",
 					"type": "Expression"
 				},
-				"fileSystem": "curatorzone"
+				"fileSystem": "rawzone"
 			}
 		}
 	}
