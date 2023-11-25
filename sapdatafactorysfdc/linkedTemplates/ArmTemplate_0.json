@@ -110,6 +110,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().FileName",
+							"type": "Expression"
+						},
 						"fileSystem": {
 							"value": "@dataset().folderpath",
 							"type": "Expression"
@@ -143,11 +147,14 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().FolderPath",
+						"fileName": {
+							"value": "@dataset().Filename",
 							"type": "Expression"
 						},
-						"fileSystem": "curatorzone"
+						"fileSystem": {
+							"value": "@concat('curatorzone','/',dataset().FolderPath)",
+							"type": "Expression"
+						}
 					}
 				}
 			},
@@ -224,30 +231,6 @@
 								}
 							}
 						]
-					},
-					{
-						"name": "Set variable1",
-						"type": "SetVariable",
-						"dependsOn": [
-							{
-								"activity": "Copy data1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"variableName": "test",
-							"value": {
-								"value": "@pipeline().parameters.FolderPath",
-								"type": "Expression"
-							}
-						}
 					}
 				],
 				"policy": {
