@@ -156,10 +156,11 @@
 							"value": "@dataset().FileName",
 							"type": "Expression"
 						},
-						"fileSystem": {
-							"value": "@dataset().folderpath",
+						"folderPath": {
+							"value": "@concat('event','/',dataset().folderpath)",
 							"type": "Expression"
-						}
+						},
+						"fileSystem": "rawzone"
 					}
 				}
 			},
@@ -194,7 +195,7 @@
 							"type": "Expression"
 						},
 						"folderPath": {
-							"value": "@if(contains(dataset().FolderPath,'event/'), split(dataset().FolderPath,'event/' )[1],'' )",
+							"value": "@if(contains(dataset().FolderPath,'event/'), split(dataset().FolderPath,'event/' )[1], '')",
 							"type": "Expression"
 						},
 						"fileSystem": {
