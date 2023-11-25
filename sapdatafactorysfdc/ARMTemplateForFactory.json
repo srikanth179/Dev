@@ -19,15 +19,7 @@
 			"type": "string",
 			"defaultValue": "https://sapstorageaccount1.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline1_parameters_FIleName": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"trigger1_properties_pipeline1_parameters_FolderPath": {
-			"type": "string",
-			"defaultValue": "@triggerBody().folderPath"
-		},
-		"trigger1_properties_typeProperties_scope": {
+		"trigger2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccount1"
 		}
@@ -59,8 +51,7 @@
 								"type": "BinarySource",
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": false,
-									"deleteFilesAfterCompletion": false
+									"recursive": true
 								},
 								"formatSettings": {
 									"type": "BinaryReadSettings"
@@ -79,8 +70,8 @@
 								"referenceName": "Binary1",
 								"type": "DatasetReference",
 								"parameters": {
-									"Filename": {
-										"value": "@pipeline().parameters.FIleName",
+									"Foldername": {
+										"value": "@pipeline().parameters.Foldername",
 										"type": "Expression"
 									},
 									"folderpath": {
@@ -96,7 +87,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"Filename": {
-										"value": "@pipeline().parameters.FIleName",
+										"value": "@pipeline().parameters.Foldername",
 										"type": "Expression"
 									},
 									"FolderPath": {
@@ -112,7 +103,7 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"FIleName": {
+					"Foldername": {
 						"type": "string"
 					},
 					"FolderPath": {
@@ -136,7 +127,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"Filename": {
+					"Foldername": {
 						"type": "string"
 					},
 					"folderpath": {
@@ -234,38 +225,25 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"name": "[concat(parameters('factoryName'), '/trigger2')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline1",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"FIleName": "[parameters('trigger1_properties_pipeline1_parameters_FIleName')]",
-							"FolderPath": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]"
-						}
-					}
-				],
+				"runtimeState": "Stopped",
+				"pipelines": [],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/rawzone/blobs/event/",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
+					"scope": "[parameters('trigger2_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated",
 						"Microsoft.Storage.BlobDeleted"
 					]
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
