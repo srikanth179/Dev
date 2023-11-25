@@ -19,13 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://sapstorageaccount1.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline1_parameters_Foldername": {
+		"trigger1_properties_pipeline1_parameters_FileName": {
 			"type": "string",
-			"defaultValue": "@triggerBody().FolderName"
+			"defaultValue": "@triggerBody().fileName"
 		},
 		"trigger1_properties_pipeline1_parameters_FolderPath": {
 			"type": "string",
-			"defaultValue": "@triggerBody().FolderPath"
+			"defaultValue": "@triggerBody().folderPath"
 		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
@@ -98,7 +98,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"Foldername": {
+					"FileName": {
 						"type": "string"
 					},
 					"folderpath": {
@@ -195,8 +195,8 @@
 								"referenceName": "Binary1",
 								"type": "DatasetReference",
 								"parameters": {
-									"Foldername": {
-										"value": "@pipeline().parameters.Foldername",
+									"FileName": {
+										"value": "@pipeline().parameters.FileName",
 										"type": "Expression"
 									},
 									"folderpath": {
@@ -212,7 +212,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"Filename": {
-										"value": "@pipeline().parameters.Foldername",
+										"value": "@pipeline().parameters.FileName",
 										"type": "Expression"
 									},
 									"FolderPath": {
@@ -228,7 +228,7 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"Foldername": {
+					"FileName": {
 						"type": "string"
 					},
 					"FolderPath": {
@@ -256,7 +256,7 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"Foldername": "[parameters('trigger1_properties_pipeline1_parameters_Foldername')]",
+							"FileName": "[parameters('trigger1_properties_pipeline1_parameters_FileName')]",
 							"FolderPath": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]"
 						}
 					}

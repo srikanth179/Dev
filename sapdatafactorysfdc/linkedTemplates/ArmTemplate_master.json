@@ -19,13 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://sapstorageaccount1.dfs.core.windows.net/"
 		},
-		"trigger1_properties_pipeline1_parameters_Foldername": {
+		"trigger1_properties_pipeline1_parameters_FileName": {
 			"type": "string",
-			"defaultValue": "@triggerBody().FolderName"
+			"defaultValue": "@triggerBody().fileName"
 		},
 		"trigger1_properties_pipeline1_parameters_FolderPath": {
 			"type": "string",
-			"defaultValue": "@triggerBody().FolderPath"
+			"defaultValue": "@triggerBody().folderPath"
 		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
@@ -67,8 +67,8 @@
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
-					"trigger1_properties_pipeline1_parameters_Foldername": {
-						"value": "[parameters('trigger1_properties_pipeline1_parameters_Foldername')]"
+					"trigger1_properties_pipeline1_parameters_FileName": {
+						"value": "[parameters('trigger1_properties_pipeline1_parameters_FileName')]"
 					},
 					"trigger1_properties_pipeline1_parameters_FolderPath": {
 						"value": "[parameters('trigger1_properties_pipeline1_parameters_FolderPath')]"
