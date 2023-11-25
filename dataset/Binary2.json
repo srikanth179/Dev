@@ -22,10 +22,11 @@
 					"value": "@dataset().Filename",
 					"type": "Expression"
 				},
-				"fileSystem": {
-					"value": "@concat('curatorzone','/',dataset().FolderPath)",
+				"folderPath": {
+					"value": "@dataset().FolderPath",
 					"type": "Expression"
-				}
+				},
+				"fileSystem": "curatorzone"
 			}
 		}
 	}
