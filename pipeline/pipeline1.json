@@ -19,8 +19,7 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": false,
-							"deleteFilesAfterCompletion": false
+							"recursive": true
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
@@ -41,6 +40,10 @@
 						"parameters": {
 							"Filename": {
 								"value": "@pipeline().parameters.FIleName",
+								"type": "Expression"
+							},
+							"folderpath": {
+								"value": "@pipeline().parameters.FolderPath",
 								"type": "Expression"
 							}
 						}
