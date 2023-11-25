@@ -193,6 +193,10 @@
 							"value": "@dataset().Filename",
 							"type": "Expression"
 						},
+						"folderPath": {
+							"value": "@if(contains(dataset().FolderPath,'event/'), split(dataset().FolderPath,'event/' )[1],'' )",
+							"type": "Expression"
+						},
 						"fileSystem": {
 							"value": "@concat('curatorzone','/','event')",
 							"type": "Expression"
