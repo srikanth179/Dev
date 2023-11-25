@@ -13,12 +13,6 @@
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://sapstorageaccount1.dfs.core.windows.net/"
-		},
-		"trigger1_properties_pipeline2_parameters_Filename": {
-			"value": "@triggerBody()."
-		},
-		"trigger1_properties_typeProperties_scope": {
-			"value": "/subscriptions/083d989f-d4bf-4747-9620-3a08800467ff/resourceGroups/resource_group/providers/Microsoft.Storage/storageAccounts/sapstorageaccount1"
 		}
 	}
 }
