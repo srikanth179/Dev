@@ -38,10 +38,6 @@
 						"referenceName": "Binary1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Foldername": {
-								"value": "@pipeline().parameters.Foldername",
-								"type": "Expression"
-							},
 							"folderpath": {
 								"value": "@pipeline().parameters.FolderPath",
 								"type": "Expression"
@@ -68,7 +64,7 @@
 			}
 		],
 		"parameters": {
-			"Foldername": {
+			"FileName": {
 				"type": "string"
 			},
 			"FolderPath": {
