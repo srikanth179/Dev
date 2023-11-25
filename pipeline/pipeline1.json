@@ -140,6 +140,7 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
+									"sqlReaderQuery": "select * from metadata.source",
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -193,7 +194,7 @@
 											"value": "@formatDateTime(utcnow('yyyy-MM-dd'))",
 											"type": "Expression"
 										},
-										"Archive_folder": "Archive_folder"
+										"Archive_folder": "Archive_Folder"
 									}
 								}
 							]
