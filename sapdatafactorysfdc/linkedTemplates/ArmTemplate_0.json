@@ -108,7 +108,7 @@
 					"folderpath": {
 						"type": "string"
 					},
-					"foldername": {
+					"FolderName": {
 						"type": "string"
 					}
 				},
@@ -142,7 +142,7 @@
 					"FolderPath": {
 						"type": "string"
 					},
-					"Foldername": {
+					"FolderName": {
 						"type": "string"
 					}
 				},
@@ -152,7 +152,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": {
-							"value": "@concat(dataset().FolderPath,'/',dataset().Foldername)",
+							"value": "@dataset().FolderPath",
 							"type": "Expression"
 						},
 						"fileSystem": "curatorzone"
@@ -213,7 +213,7 @@
 										"value": "@pipeline().parameters.FolderPath",
 										"type": "Expression"
 									},
-									"foldername": {
+									"FolderName": {
 										"value": "@pipeline().parameters.FolderName",
 										"type": "Expression"
 									}
@@ -233,7 +233,7 @@
 										"value": "@pipeline().parameters.FolderPath",
 										"type": "Expression"
 									},
-									"Foldername": {
+									"FolderName": {
 										"value": "@pipeline().parameters.FolderName",
 										"type": "Expression"
 									}
