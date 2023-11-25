@@ -156,11 +156,10 @@
 							"value": "@dataset().FileName",
 							"type": "Expression"
 						},
-						"folderPath": {
-							"value": "@concat('event','/',dataset().folderpath)",
+						"fileSystem": {
+							"value": "@concat('rawzone','/',dataset().folderpath)",
 							"type": "Expression"
-						},
-						"fileSystem": "rawzone"
+						}
 					}
 				}
 			},
