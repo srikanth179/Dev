@@ -23,7 +23,7 @@
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "@concat('curatorzone','/',dataset().FolderPath)",
+					"value": "@concat('curatorzone','/','event')",
 					"type": "Expression"
 				}
 			}
