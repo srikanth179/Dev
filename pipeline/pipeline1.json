@@ -19,8 +19,7 @@
 						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": false,
-							"deleteFilesAfterCompletion": false
+							"recursive": true
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
@@ -39,8 +38,8 @@
 						"referenceName": "Binary1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Filename": {
-								"value": "@pipeline().parameters.FIleName",
+							"Foldername": {
+								"value": "@pipeline().parameters.Foldername",
 								"type": "Expression"
 							},
 							"folderpath": {
@@ -56,7 +55,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": {
-								"value": "@pipeline().parameters.FIleName",
+								"value": "@pipeline().parameters.Foldername",
 								"type": "Expression"
 							},
 							"FolderPath": {
@@ -69,7 +68,7 @@
 			}
 		],
 		"parameters": {
-			"FIleName": {
+			"Foldername": {
 				"type": "string"
 			},
 			"FolderPath": {
