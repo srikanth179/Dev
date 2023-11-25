@@ -18,11 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
+				"fileSystem": {
 					"value": "@dataset().folderpath",
 					"type": "Expression"
-				},
-				"fileSystem": "rawzone"
+				}
 			}
 		}
 	}
