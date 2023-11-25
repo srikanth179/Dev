@@ -148,7 +148,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": {
-							"value": "@concat(dataset().folderpath,'/','folder_name')",
+							"value": "@dataset().folderpath",
 							"type": "Expression"
 						},
 						"fileSystem": "rawzone"
@@ -182,7 +182,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": {
-							"value": "@concat(dataset().FolderPath,'/','folder_name')",
+							"value": "@dataset().FolderPath",
 							"type": "Expression"
 						},
 						"fileSystem": "curatorzone"
