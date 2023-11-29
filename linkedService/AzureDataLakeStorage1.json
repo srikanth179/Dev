@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://sapstorageaccountsfdc.dfs.core.windows.net/",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1MDYxOWUwZS01NzM0LTQ0N2EtOGE4My04YjVlNTAxY2UyODUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"url": "https://storageaccountsafsfdc.dfs.core.windows.net/",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3YjQyYjllMi0zNDNhLTQxNDQtOTBiNS00NWJjMTI3YmEyZmUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
