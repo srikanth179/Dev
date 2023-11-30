@@ -49,6 +49,8 @@
 						{
 							"name": "RAWZONE TO CURATORZONE",
 							"type": "Copy",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -119,8 +121,8 @@
 							]
 						},
 						{
-							"name": "archive_pipeline",
-							"type": "Copy",
+							"name": "mount_point",
+							"type": "DatabricksNotebook",
 							"dependsOn": [
 								{
 									"activity": "RAWZONE TO CURATORZONE",
@@ -138,69 +140,53 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "SqlServerSource",
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
+								"notebookPath": "/Users/srikanthkalam09@gmail.com/MOUNT_POINT"
+							},
+							"linkedServiceName": {
+								"referenceName": "AzureDatabricks1",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Notebook2",
+							"type": "DatabricksNotebook",
+							"dependsOn": [
+								{
+									"activity": "mount_point",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"notebookPath": "/Users/srikanthkalam09@gmail.com/transformations",
+								"baseParameters": {
+									"SCHEMA_NAME": {
+										"value": "@item().schema_name",
+										"type": "Expression"
 									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".csv"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
+									"TABLE_NAME": {
+										"value": "@item().table_name",
+										"type": "Expression"
+									},
+									"delta_table_name": {
+										"value": "@item().delta_table_name",
+										"type": "Expression"
 									}
 								}
 							},
-							"inputs": [
-								{
-									"referenceName": "archivesourceDB",
-									"type": "DatasetReference",
-									"parameters": {
-										"schema_name": {
-											"value": "@item().schema_name",
-											"type": "Expression"
-										},
-										"table_name": {
-											"value": "@item().table_name",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "archivesink",
-									"type": "DatasetReference",
-									"parameters": {
-										"schema_name": {
-											"value": "@item().schema_name",
-											"type": "Expression"
-										},
-										"archive_folder": "Archive_folder",
-										"current_date": {
-											"value": "@utcnow('yyyy-MM-dd')",
-											"type": "Expression"
-										},
-										"table_name": {
-											"value": "@item().table_name",
-											"type": "Expression"
-										}
-									}
-								}
-							]
+							"linkedServiceName": {
+								"referenceName": "AzureDatabricks1",
+								"type": "LinkedServiceReference"
+							}
 						}
 					]
 				}
