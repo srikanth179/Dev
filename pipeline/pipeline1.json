@@ -49,8 +49,6 @@
 						{
 							"name": "RAWZONE TO CURATORZONE",
 							"type": "Copy",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -123,7 +121,14 @@
 						{
 							"name": "Notebook2",
 							"type": "DatabricksNotebook",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "RAWZONE TO CURATORZONE",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -133,7 +138,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"notebookPath": "/Users/srikanthkalam09@gmail.com/transformations",
+								"notebookPath": "/Users/srikanthkalam09@gmail.com/Transformations",
 								"baseParameters": {
 									"SCHEMA_NAME": {
 										"value": "@item().schema_name",
@@ -141,10 +146,6 @@
 									},
 									"TABLE_NAME": {
 										"value": "@item().table_name",
-										"type": "Expression"
-									},
-									"delta_table_name": {
-										"value": "@item().delta_table_name",
 										"type": "Expression"
 									}
 								}
